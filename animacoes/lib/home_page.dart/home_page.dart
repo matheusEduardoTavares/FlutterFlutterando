@@ -10,6 +10,8 @@ class _HomePageState extends State<HomePage> {
   var size = 50.0;
   var x = 10.0;
   var y = 100.0;
+  var dy = 1.0;
+  var gravity = 1;
 
   //O ticker faz o cálculo de frames
   Ticker _ticker;
@@ -33,9 +35,11 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    if (y < MediaQuery.of(context).size.height - size){
-      y += 1;
+    if (y > MediaQuery.of(context).size.height - size){
+      dy = -dy;
     }
+    dy += gravity;
+    y += dy;
 
     return Scaffold(
       body: Transform.translate(
@@ -43,7 +47,10 @@ class _HomePageState extends State<HomePage> {
         child: Container(
           width: size,
           height: size,
-          color: Colors.red
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(40),
+            color: Colors.red
+          )
         ),
       )
     );
