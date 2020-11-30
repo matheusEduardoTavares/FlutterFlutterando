@@ -7,46 +7,30 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  var size = 50.0;
-  var x = 10.0;
-  var y = 100.0;
-  var dy = 1.0;
-  var gravity = 1;
+  var startSize = 50.0;
+  var endSize = 100.0;
 
-  //O ticker faz o cálculo de frames
-  Ticker _ticker;
-
-  @override 
-  void initState(){
-    super.initState();
-
-    _ticker = Ticker((now) {
-      setState(() {});
-    });
-    _ticker.start();
-  }
-
-  @override 
-  void dispose(){
-    super.dispose();
-
-    _ticker.dispose();
-  }
+   bool isGrowing = false;
 
   @override
   Widget build(BuildContext context) {
-    if (y > MediaQuery.of(context).size.height - size){
-      dy = -dy;
-    }
-    dy += gravity;
-    y += dy;
-
     return Scaffold(
-      body: Transform.translate(
-        offset: Offset(x, y),
-        child: Container(
-          width: size,
-          height: size,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            isGrowing = !isGrowing;
+          });
+        },
+        child: Icon(Icons.refresh),
+      ),
+      body: Center(
+        //animações ímplicitas = tudo já está sendo
+        //feito internamente. Há vários widgets desse
+        //que se iniciam com Animated
+        child: AnimatedContainer(
+          duration: Duration(seconds: 2),
+          width: isGrowing ? endSize : startSize,
+          height: isGrowing ? endSize : startSize,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(40),
             color: Colors.red
