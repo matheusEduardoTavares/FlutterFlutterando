@@ -8,17 +8,41 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   bool isGrowing = false;
+  double force = 20;
 
   final ballController = BallController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          ballController.setSize(ballController.size + 10);
-        },
-        child: Icon(Icons.refresh),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          FloatingActionButton(
+            onPressed: () {
+              ballController.setTranslate(x: ballController.x - force);
+            },
+            child: Icon(Icons.arrow_left),
+          ),
+          FloatingActionButton(
+            onPressed: () {
+              ballController.setTranslate(y: ballController.y - force);
+            },
+            child: Icon(Icons.arrow_upward),
+          ),
+          FloatingActionButton(
+            onPressed: () {
+              ballController.setTranslate(y: ballController.y + force);
+            },
+            child: Icon(Icons.arrow_downward),
+          ),
+          FloatingActionButton(
+            onPressed: () {
+              ballController.setTranslate(x: ballController.x + force);
+            },
+            child: Icon(Icons.arrow_forward),
+          ),
+        ],
       ),
       body: Center(
         //Assim temos um controle de estados
