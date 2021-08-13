@@ -1,15 +1,15 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:flutter_modular_slidy/app/modules/week/week_store.dart';
+import 'package:flutter_modular_slidy/app/modules/auth/auth_store.dart';
 import 'package:flutter/material.dart';
 
-class WeekPage extends StatefulWidget {
+class AuthPage extends StatefulWidget {
   final String title;
-  const WeekPage({Key? key, this.title = 'WeekPage'}) : super(key: key);
+  const AuthPage({Key? key, this.title = 'AuthPage'}) : super(key: key);
   @override
-  WeekPageState createState() => WeekPageState();
+  AuthPageState createState() => AuthPageState();
 }
-class WeekPageState extends State<WeekPage> {
-  final WeekStore store = Modular.get();
+class AuthPageState extends State<AuthPage> {
+  final AuthStore store = Modular.get();
 
   @override
   Widget build(BuildContext context) {

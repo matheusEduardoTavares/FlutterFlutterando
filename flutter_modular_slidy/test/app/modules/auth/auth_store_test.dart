@@ -1,11 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_modular_slidy/app/modules/week/week_store.dart';
+import 'package:flutter_modular_slidy/app/modules/auth/auth_store.dart';
  
 void main() {
-  late WeekStore store;
+  late AuthStore store;
 
   setUpAll(() {
-    store = WeekStore();
+    store = AuthStore();
   });
 
   test('increment count', () async {
