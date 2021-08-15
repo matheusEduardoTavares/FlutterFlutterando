@@ -1,16 +1,22 @@
 import 'package:common/common.dart';
-import 'package:test/test.dart';
+import 'package:test/expect.dart';
+import 'package:test/scaffolding.dart';
 
 void main() {
-  group('A group of tests', () {
-    final awesome = Awesome();
+  test('from json to json', () {
 
-    setUp(() {
-      // Additional setup goes here.
-    });
+    final json = {
+      'name': 'Maria',
+      'room': 'Sala 1',
+      'text': '',
+      'type': 'SocketEventType.enter_room',
+    };
 
-    test('First Test', () {
-      expect(awesome.isAwesome, isTrue);
-    });
+    final event = SocketEvent.fromJson(json);
+    expect(event.name, 'Maria');
+    expect(event.room, 'Sala 1');
+    expect(event.text, '');
+    expect(event.type, SocketEventType.enter_room);
+    expect(event.toJson(), json);
   });
 }
