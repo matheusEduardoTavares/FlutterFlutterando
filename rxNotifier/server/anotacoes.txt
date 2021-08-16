@@ -1,0 +1,31 @@
+Para subir a imagem do 
+Container criado para o Heroku basta
+seguir esses passos:
+
+1 - Criar conta no Heroku e logar nele;
+2 - Clicar em new e em create new App, dar um nome para
+o APP que ainda não seja usado e escolher qualquer região.
+Clicar em criar APP.
+3 - Tem algumas formas de subir o APP, uma delas é o 
+heroku git, a outra é o próprio github, e a outra 
+é o Container registry, onde basta subir a imagem que 
+foi buildada. Primeiramente é necessário instalar a 
+CLI do Container Registry. Aí fazemos o login (heroku login), 
+precisamos de um docker instalado obviamente.
+4 - Digitar no terminal os seguintes comandos: 
+heroku container:login
+heroku container:push web -a dart-socket --context-path ../
+(ao invés de dart-socket deve-se colocar o nome do APP que foi criado);
+Com isso, a imagem é buildada e enviada para o Heroku;
+5 - Agora podemos por essa imagem do docker que subimos para 
+produção usando o comando:
+heroku container:release web -a dart-socket;
+6 - Indo em Overview vemos que o APP está "on", ou seja, podemos 
+subir de graça
+Aí é só pegar a URL gerada (clicar em Open app) e lá teremos acesso 
+ao que o container tinha. No caso, por ser um websocket usamos a 
+extensão do socket.io checker do chrome para testar o websocket. Não 
+precisa por a porta 3000 do websocket para se conectar no socket, 
+pois o heroku só trabalha na porta 80, e automaticamente ele já 
+seta na variável de ambiente do docker que ele subiu como na 
+porta 80.

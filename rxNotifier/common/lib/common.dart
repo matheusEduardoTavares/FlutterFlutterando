@@ -1,5 +1,7 @@
 library common;
 
+const String API_SERVER = 'https://dart-socket.herokuapp.com/';
+
 class SocketEvent {
   SocketEvent({
     required this.name,
