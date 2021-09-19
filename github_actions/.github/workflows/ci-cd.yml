@@ -1,0 +1,48 @@
+# Nome do Workflow
+name: CI/CD
+
+# Quando que irá rodar esse CI, no caso nas branchs definidas
+on:
+  push:
+    branches:
+      # - develop
+      # - master
+      - githubActions
+  pull_request:
+    branches:
+      # - develop
+      # - master
+      - githubActions
+
+#Etapas que serão feitas
+jobs:
+  flutter_test:
+    name: Run Flutter analyze and tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v1
+        with:
+          java-version: "12.x"
+      - uses: subosito/flutter-action@v1
+        with:
+          flutter-version: '2.2.3'
+      - run: flutter pub get
+      - run: flutter analyze
+      # - run: flutter format --dry-run --set-exit-if-changed lib/
+      # - run: flutter format --dry-un --set-exit-if-changed test/
+      # Serve para fazer a cobertura de testes no flutter
+      - run: flutter test --coverage
+      # Aqui irá pegar o resultado da cobertura de testes e colocar em um JSON
+      - run: flutter test --machine > test-results.json
+      # Gera um relatório com o resultado dos testes com nome test-results
+      - uses: dorny/test-reporter@v1.4.2
+        with:
+          name: test-results
+          path: test-results.json
+          reporter: flutter-json
+      # Define porcentagem mínima de coverage dos nossos testes, se os testes não
+      # baterem a porcentagem definida no min_coverage irá falhar
+      - uses: VeryGoodOpenSource/very_good_coverage@v1.1.1
+        with:
+          min_coverage: 0
