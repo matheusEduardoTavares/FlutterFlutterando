@@ -7,12 +7,12 @@ on:
     branches:
       # - develop
       # - master
-      - githubActions
+      - githubactions
   pull_request:
     branches:
       # - develop
       # - master
-      - githubActions
+      - githubactions
 
 #Etapas que serão feitas
 jobs:
