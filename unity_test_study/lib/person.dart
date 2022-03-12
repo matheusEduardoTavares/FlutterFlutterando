@@ -18,4 +18,6 @@ class Person {
 
     return double.parse(result.toStringAsFixed(2));
   }
+
+  bool get isOlder => age >= 18;
 }
