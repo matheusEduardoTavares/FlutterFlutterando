@@ -17,14 +17,27 @@ void main() {
     expect(person.imc, 24.22);
   });
 
-  test('Se a idade for igual a 18, então isOlder deve ser true', () {
-    final person = Person(
-      name: 'Matheus', 
-      age: 18, 
-      height: 1.70, 
-      weight: 70.0,
-    );
+  group('isOlder |', () {
+    test('Se a idade for igual a 18, então isOlder deve ser true', () {
+      final person = Person(
+        name: 'Matheus', 
+        age: 18, 
+        height: 1.70, 
+        weight: 70.0,
+      );
 
-    expect(person.isOlder, true);
+      expect(person.isOlder, true);
+    });
+
+    test('Se a idade for menor que 18, então isOlder deve ser false', () {
+      final person = Person(
+        name: 'Matheus', 
+        age: 17, 
+        height: 1.70, 
+        weight: 70.0,
+      );
+
+      expect(person.isOlder, false);
+    });
   });
 }
