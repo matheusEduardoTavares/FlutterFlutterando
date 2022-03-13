@@ -2,6 +2,7 @@ import 'package:unity_test_study/person.dart';
 
 void main(List<String> arguments) {
   final person = Person(
+    id: 1,
     name: 'Matheus', 
     age: 21, 
     height: 1.70, 
