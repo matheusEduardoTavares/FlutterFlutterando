@@ -2,9 +2,8 @@ import 'dart:convert';
 
 import 'package:http/http.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:test/expect.dart';
-import 'package:test/scaffolding.dart';
 import 'package:unity_test_study/person_repository.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 class MockClient extends Mock implements Client {}
 class MockURI extends Mock implements Uri {}
@@ -24,6 +23,11 @@ void main() {
   ///e em testes de integração sim, de fato
   ///consumir a API
   test('deve pegar uma lista de Person requisitando à API', () async {
+    when(() => client.get(any())).thenAnswer((invocation) async => Response(
+      jsonEncode(jsonReturn),
+      200,
+    ));
+
     final list = await repository.getPerson();
 
     expect(list.isNotEmpty, equals(true));

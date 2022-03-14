@@ -2,8 +2,7 @@
 // @Skip('Reason to skip')
 // @Tags(['web'])
 
-import 'package:test/expect.dart';
-import 'package:test/scaffolding.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   ///O timeout de um suite é de 30 segundos,

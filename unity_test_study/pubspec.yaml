@@ -9,8 +9,14 @@ environment:
 #   path: ^1.8.0
 dev_dependencies:
   lints: ^1.0.0
+  flutter_test: 
+    sdk: flutter
   mocktail: ^0.3.0
-  test: ^1.16.0
 dependencies:
   bloc: ^8.0.3
+  flutter:
+    sdk: flutter
   http: ^0.13.4
+
+flutter:
+  uses-material-design: true

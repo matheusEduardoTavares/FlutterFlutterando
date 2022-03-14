@@ -1,5 +1,4 @@
-import 'package:test/expect.dart';
-import 'package:test/scaffolding.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:unity_test_study/person.dart';
 
 void main() {
