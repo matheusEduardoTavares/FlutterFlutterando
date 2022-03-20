@@ -47,6 +47,8 @@ class _LoginPageState extends State<LoginPage> {
                   if (value?.isEmpty ?? false) {
                     return 'Campo não pode ser nulo';
                   }
+
+                  return null;
                 },
               ),
             ],
