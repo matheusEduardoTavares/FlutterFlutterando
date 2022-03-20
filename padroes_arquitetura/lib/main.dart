@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:padroes_arquitetura/archs/mvc/login_page.dart';
 
 void main() {
   runApp(const MyApp());
